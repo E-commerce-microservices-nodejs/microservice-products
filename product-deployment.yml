@@ -19,22 +19,22 @@ spec:
             imagePullPolicy: Always
             ports:
               - containerPort: 5001
-                name: backend-port
+                name: product-port
             livenessProbe:
               httpGet:
-                port: backend-port
+                port: product-port
                 path: /health
               failureThreshold: 1
               periodSeconds: 10
             startupProbe:
               httpGet:
-                port: backend-port
+                port: product-port
                 path: /health
               failureThreshold: 30
               periodSeconds: 10
             readinessProbe:
               httpGet:
-                port: backend-port
+                port: product-port
                 path: /ready
               failureThreshold: 1
               periodSeconds: 10
