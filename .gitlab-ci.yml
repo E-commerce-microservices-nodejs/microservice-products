@@ -19,7 +19,7 @@ build-product:
   stage: build
   script: 
     - apk add npm && apk update 
-    - npm install
+    - npm run build
 
 docker-build:
   stage: package
