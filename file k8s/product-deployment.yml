@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: product-deployment
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -15,8 +15,7 @@ spec:
     spec:
       containers:
           - name: product-deployment
-            image: asmaeel/product-microservice:latest
-            imagePullPolicy: Always
+            image: asmaeel/product-microservice:1.0
             ports:
               - containerPort: 5001
                 name: product-port
