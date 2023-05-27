@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://gitlab.com/Asmae20/product-microservice.git
     targetRevision: HEAD
-    path: 
+    path: file k8s
     
   destination:
     server: https://kubernetes.default.svc
