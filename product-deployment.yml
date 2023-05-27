@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-deployment
+  namespace: m-ecommerce
+spec:
+  selector:
+    matchLabels:
+      app: product-deployment
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: product-deployment
+    spec:
+      containers:
+          - name: product-deployment
+            image: asmaeel/product-microservice:latest
+            imagePullPolicy: Always
+            ports:
+              - containerPort: 5001
+                name: backend-port
+            livenessProbe:
+              httpGet:
+                port: backend-port
+                path: /health
+              failureThreshold: 1
+              periodSeconds: 10
+            startupProbe:
+              httpGet:
+                port: backend-port
+                path: /health
+              failureThreshold: 30
+              periodSeconds: 10
+            readinessProbe:
+              httpGet:
+                port: backend-port
+                path: /ready
+              failureThreshold: 1
+              periodSeconds: 10
+
+        
