@@ -1,0 +1,34 @@
+image: docker:latest
+services:
+  - docker:dind
+
+stages:
+  - sast
+  - build 
+  - package
+
+variables:
+  TAG: $CI_COMMIT_MESSAGE
+
+sast:
+  stage: sast
+include:
+- template: Security/SAST.gitlab-ci.yml
+
+build-product:
+  stage: build
+  script: 
+    - apk add npm && apk update 
+    - npm run build
+
+docker-build:
+  stage: package
+  before_script:
+    - docker login -u asmaeel -p $DOCKER_HUB_PASS 
+  script:
+    - docker build -t asmaeel/product-microservice:$TAG .
+    - docker push asmaeel/product-microservice:$TAG
+
+
+after_script:
+  - docker logout
