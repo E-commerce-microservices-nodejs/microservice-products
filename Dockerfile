@@ -21,7 +21,7 @@ RUN npm ci --only=production && \
 COPY . .
 
 # Create the build directory and set appropriate permissions
-RUN mkdir -p /app/build && \ npm run build
+RUN mkdir -p /app/build && npm run build && \
     chown -R node:node /app/build
 
 # Expose the port on which the application listens
