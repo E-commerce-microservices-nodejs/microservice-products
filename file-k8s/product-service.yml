@@ -8,7 +8,6 @@ metadata:
 spec:
   selector:
     app: product-deployment
-  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 5001
