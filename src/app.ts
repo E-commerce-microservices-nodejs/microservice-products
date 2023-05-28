@@ -19,6 +19,8 @@ app.use(express.json());
 // routes
 app.use("/api/products", productsRouter);
 
+
+
 // database connection
 mongoose
   .connect(
