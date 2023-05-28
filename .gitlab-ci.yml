@@ -6,6 +6,7 @@ stages:
   - sast
   - build 
   - package
+  - deploy-k8s
 
 variables:
   TAG: $CI_COMMIT_MESSAGE
@@ -15,12 +16,6 @@ sast:
 include:
 - template: Security/SAST.gitlab-ci.yml
 
-build-product:
-  stage: build
-  script: 
-    - apk add npm && apk update 
-    - npm run build
-
 docker-build:
   stage: package
   before_script:
@@ -29,6 +24,20 @@ docker-build:
     - docker build -t asmaeel/product-microservice:$TAG .
     - docker push asmaeel/product-microservice:$TAG
 
+gitops-k8s-deploy:
+  image: bitnami/git:latest
+  stage: deploy-k8s
+  before_script:
+    - git config --global user.email "elazrakasmae@gmail.com"
+    - git config --global user.name "Asmae20"
+  script:
+    - git clone https://gitlab.com/Asmae20/product-microservice.git
+    - sed -i "s/product-microservice:1.4/product-microservice:$TAG/g" product-microservice/file k8s/product-deployment.yaml
+    - cat product-deployment.yaml
+    - git add product-deployment.yaml
+    - git commit -m "microservice version $TAG"
+    - git remote set-url origin https://Asmae20:$GIT_PASSWORD@gitlab.com/Asmae20/product-microservice-kubernetes.git
+    - git push -uf origin main
 
 after_script:
   - docker logout

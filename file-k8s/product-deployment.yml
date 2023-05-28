@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
           - name: product-deployment
-            image: asmaeel/product-microservice:1.0
+            image: asmaeel/product-microservice:1.4
             ports:
               - containerPort: 5001
                 name: product-port
@@ -37,5 +37,12 @@ spec:
                 path: /ready
               failureThreshold: 1
               periodSeconds: 10
+            env:
+              - name: DB_HOST
+                valueFrom:
+                  configMapKeyRef:
+                  name: mongodb-conf
+                  key: host
+
 
         
