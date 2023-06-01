@@ -17,15 +17,16 @@ router.get("/", (req, res) => {
   ProductModel.find()
     .then((products) => {
       if (products.length === 0) {
-        res.status(204);
-        res.json({ message: "no products exists" });
+        res.status(204).json({ message: "No products exist" });
+      } else {
+        res.json(products);
       }
-      res.json(products);
     })
-    .catch((error: Error) => {
+    .catch((error) => {
       res.status(500).json({ error: error.message });
     });
 });
+
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 router.get("/:id", async (req: Request, res: Response) => {
   try {
