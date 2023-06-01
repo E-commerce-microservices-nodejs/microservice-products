@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: product-deployment
-          image: asmaeel/product-microservice:1.5
+          image: asmaeel/product-microservice:1.6
           ports:
             - containerPort: 5001
               name: product-port
