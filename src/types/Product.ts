@@ -1,7 +1,12 @@
 interface Product {
-  _id: string;
-  name: string;
+  id: string;
+  categories: string;
+  title: string;
+  rating: string;
   description: string;
-  price: number;
+  price: string;
+  image: string[];
+  inStock: boolean;
+  review: string[];
 }
 export default Product;
