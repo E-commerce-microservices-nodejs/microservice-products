@@ -53,13 +53,6 @@ router.delete("/:id", (req, res) => {
     });
 });
 
-app.get("/health", (req, res) => {
-   res.send('server is runnig ');
-});
-
-app.get("/raedy", (req, res) => {
-  res.send('server is ready ');
-});
 
 export = router;
 // export default router
