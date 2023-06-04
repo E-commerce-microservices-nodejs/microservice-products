@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose, { Document, Schema } from 'mongoose';
 
 interface ProductFields {
   id: string;
@@ -24,9 +24,9 @@ const productSchema = new Schema<ProductDocument>({
   categories: { type: String, required: false },
   rating: { type: String, required: false },
   inStock: { type: Boolean, required: false },
-  review: { type: [String], required: false }
+  review: { type: [String], required: false },
 });
 
-const ProductModel = mongoose.model<ProductDocument>("Product", productSchema);
+const ProductModel = mongoose.model<ProductDocument>('Product', productSchema);
 
 export default ProductModel;
