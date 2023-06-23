@@ -23,6 +23,11 @@ FROM node:16.20-bullseye-slim
 
 # Set environment variables
 ENV NODE_ENV=production
+<<<<<<< HEAD
+=======
+ENV MONGO_URI=mongodb://mongodb-service/microservices
+
+>>>>>>> 71a1120d302b4e00f52ce6034ef267c0878c4226
 ENV PORT=5001
 
 # Set the working directory
@@ -42,4 +47,8 @@ EXPOSE 5001
 USER node
 
 # Start the application
+<<<<<<< HEAD
 CMD ["node", "build/server.js"]
+=======
+CMD ["node", "build/server.js"]
+>>>>>>> 71a1120d302b4e00f52ce6034ef267c0878c4226

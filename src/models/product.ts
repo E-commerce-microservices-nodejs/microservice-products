@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import mongoose, { Document, Schema } from "mongoose";
+=======
+import mongoose, { Document, Schema } from 'mongoose';
+>>>>>>> 71a1120d302b4e00f52ce6034ef267c0878c4226
 
 interface ProductFields {
   id: string;
@@ -24,9 +28,16 @@ const productSchema = new Schema<ProductDocument>({
   categories: { type: String, required: false },
   rating: { type: String, required: false },
   inStock: { type: Boolean, required: false },
+<<<<<<< HEAD
   review: { type: [String], required: false }
 });
 
 const ProductModel = mongoose.model<ProductDocument>("Product", productSchema);
+=======
+  review: { type: [String], required: false },
+});
+
+const ProductModel = mongoose.model<ProductDocument>('Product', productSchema);
+>>>>>>> 71a1120d302b4e00f52ce6034ef267c0878c4226
 
 export default ProductModel;
